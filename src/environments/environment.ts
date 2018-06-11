@@ -13,3 +13,16 @@ export const environment = {
  * because it will have performance impact when throw error
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+export const firebaseEnvironment = {
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyCkjjDvkGPIUMxH4VLlXq7tInbT17JgNPQ',
+    authDomain: 'glaring-fire-74.firebaseapp.com',
+    databaseURL: 'https://glaring-fire-74.firebaseio.com',
+    projectId: 'glaring-fire-74',
+    storageBucket: 'glaring-fire-74.appspot.com',
+    messagingSenderId: '260024706779'
+  }
+};

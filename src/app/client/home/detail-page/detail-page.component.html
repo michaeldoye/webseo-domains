@@ -1,0 +1,109 @@
+<div class="home-container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="header-top" fxLayout="row" fxLayoutAlign="start center">
+
+    <h2 *ngIf="activeDomain">
+      <button style="vertical-align:middle" matTooltip="back" routerLink="/" mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      {{activeDomain.name}}
+    </h2>
+
+    <mat-form-field style="margin-left:20px" fxFlex="8%" *ngIf="activeDomain && activeDomain.status">
+      <mat-select (selectionChange)="changeDomainStatus($event)" [(value)]="activeDomain.status" disableRipple>
+        <mat-option value="email">Email</mat-option>
+        <mat-option value="hosting">Hosting</mat-option>
+        <mat-option value="parked">Parked</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <span fxFlex></span>
+
+    <button matTooltip="delete" (click)="delete(activeDomain.id)" mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+
+  </div>
+  <div class="content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="35px">
+    <mat-card fxLayout="column" fxLayoutAlign="start center">
+      <mat-card-subtitle> Client Details </mat-card-subtitle>
+      
+      <div class="detail-list" fxLayout="row" fxLayoutAlign="start center" *ngIf="activeDomain">
+        <mat-list fxFlex="50%">
+          <mat-list-item>
+            <mat-icon matListIcon>person</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.client" 
+              (contenteditableModelChange)="nodeChange($event, 'client')"> {{activeDomain.client}} </h3>
+          </mat-list-item>
+          
+          <mat-list-item>
+            <mat-icon matTooltip="domain registration" matListIcon>find_replace</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.domain" 
+              (contenteditableModelChange)="nodeChange($event, 'domain')"> Domain: {{activeDomain.domain}} </h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>network_wifi</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.ipaddress" 
+              (contenteditableModelChange)="nodeChange($event, 'ipaddress')"> {{activeDomain.ipaddress}} </h3>
+          </mat-list-item>
+  
+        </mat-list>
+
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListIcon>email</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.contact" 
+              (contenteditableModelChange)="nodeChange($event, 'contact')"> {{activeDomain.contact}} </h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>monetization_on</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.cost" 
+              (contenteditableModelChange)="nodeChange($event, 'cost')">R {{activeDomain.cost}} </h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>home</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="activeDomain.server" 
+              (contenteditableModelChange)="nodeChange($event, 'server')"> {{activeDomain.server}} </h3>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <mat-spinner strokeWidth="4" diameter="50" *ngIf="!activeDomain"></mat-spinner>
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutAlign="start center" *ngIf="activeDomain && activeDomain.dns">
+      <mat-card-subtitle> Name Servers </mat-card-subtitle>
+      
+      <div class="detail-list">
+        <mat-grid-list cols="2" rowHeight="50px">          
+          <mat-grid-tile *ngFor="let dns of activeDomain.dns">
+            <mat-list style="width:100%">
+              <mat-list-item>
+                <mat-icon matListIcon>cloud</mat-icon>
+                <h3 matLine> {{dns}} </h3>
+              </mat-list-item>
+            </mat-list>            
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutAlign="start center">
+      <mat-card-subtitle> Whois Data </mat-card-subtitle>
+      <pre style="width: 100%;white-space: pre-wrap" *ngIf="whoisData">
+        {{whoisData | json}}
+      </pre>
+      <mat-spinner strokeWidth="4" diameter="50" *ngIf="!whoisData"></mat-spinner>
+    </mat-card>
+
+
+  </div>
+</div>

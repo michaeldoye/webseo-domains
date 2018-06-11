@@ -1,0 +1,86 @@
+<mat-accordion>
+
+  <mat-expansion-panel *ngFor="let item of panelItems | searchFilter:filter; let i = index; let first = first" [expanded]="step === i" (opened)="setStep(i)">
+    <mat-expansion-panel-header>
+      <mat-panel-title fxFlex="50%">    
+        <strong>{{ item.name }}</strong>
+      </mat-panel-title>
+      <mat-panel-description>   
+        {{ item.status }}
+        <span fxFlex></span>
+        <mat-icon [matTooltip]="item.status" *ngIf="item.status == 'email'">alternate_email</mat-icon>
+        <mat-icon [matTooltip]="item.status" *ngIf="item.status == 'hosting'">store</mat-icon>
+        <mat-icon [matTooltip]="item.status" *ngIf="item.status == 'parked'">directions_car</mat-icon>         
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-list fxFlex="50%">
+          <mat-list-item>
+            <mat-icon matListIcon>person</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.client" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'client')"></h3>
+          </mat-list-item>
+          
+          <mat-list-item>
+            <mat-icon matListIcon>find_replace</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.domain" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'domain')"></h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>network_wifi</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.ipaddress" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'ipaddress')"></h3>
+          </mat-list-item>
+        </mat-list>
+
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListIcon>email</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.contact" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'contact')"></h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>monetization_on</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.cost" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'cost')"></h3>
+          </mat-list-item>
+  
+          <mat-list-item>
+            <mat-icon matListIcon>home</mat-icon>
+            <h3 matLine contenteditable="true" 
+              [(msContenteditable)]="item.server" 
+              (contenteditableModelChange)="nodeChange($event, item.id, 'server')"></h3>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </ng-template>
+
+    <mat-action-row>
+      <button matTooltip="Delete" mat-icon-button (click)="delete(item.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button matTooltip="Domain Info" mat-icon-button [routerLink]="'domain/'+item.name">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button matTooltip="Client Info" mat-icon-button [routerLink]="'client/'+item.client">
+        <mat-icon>person</mat-icon>
+      </button>      
+      <button matTooltip="Previous" mat-icon-button *ngIf="!first" (click)="prevStep()">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+      <button matTooltip="Next" mat-icon-button (click)="nextStep()">
+          <mat-icon>navigate_next</mat-icon>
+      </button>
+    </mat-action-row>    
+  </mat-expansion-panel>
+
+</mat-accordion>

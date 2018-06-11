@@ -1,0 +1,15 @@
+:host {
+  width: 100%;
+  max-width: 55.5%;
+  margin-top: 16px;
+  margin-left: -183px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container > * {
+  width: 100%;
+}

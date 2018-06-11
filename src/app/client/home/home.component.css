@@ -1,0 +1,20 @@
+.content {
+  max-width: 55%;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.header-top {
+  width: 100%;
+  max-width: 55%;
+  margin-top: 50px;
+}
+
+.panel-card {
+  min-height: 500px;
+  width: 100%;
+}
+
+.dark-theme .header-top {
+  background-color: transparent;
+}

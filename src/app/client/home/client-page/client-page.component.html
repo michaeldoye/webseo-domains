@@ -1,0 +1,25 @@
+<div class="home-container" fxLayout="column" fxLayoutAlign="center center">
+    <div class="header-top" fxLayout="row" fxLayoutAlign="start center">
+  
+      <h2 *ngIf="activeClient">
+        <button style="vertical-align:middle" matTooltip="back" routerLink="/" mat-icon-button>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        {{activeClient.name}}
+      </h2>
+  
+      <span fxFlex></span>
+  
+    </div>
+    <div class="content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="35px">
+
+      <mat-card fxLayout="column" fxLayoutAlign="start center">
+        <mat-card-subtitle> Client Details </mat-card-subtitle>
+        <mat-card-content *ngIf="activeClient">
+          {{activeClient.name}} has {{activeClient.domains.length}} domains {{domainsCost}}
+        </mat-card-content>
+        <mat-spinner strokeWidth="4" diameter="50" *ngIf="!activeClient"></mat-spinner>
+      </mat-card>
+  
+    </div>
+  </div>

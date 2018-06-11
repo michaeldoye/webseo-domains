@@ -1,0 +1,82 @@
+<div class="home-container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="header-top" fxLayout="row" fxLayoutAlign="start center">
+
+    <div>
+      <h1>All Domains</h1>
+      <h4 subheading-1>{{costString}}</h4>
+    </div>
+
+    <span fxFlex></span>
+
+    <form>
+      <mat-form-field style="margin-right: 10px;">
+        <input type="text" placeholder="Filter By Client" aria-label="sort by client" matInput [formControl]="clientSearchCtrl" [matAutocomplete]="auto">
+        <button mat-button *ngIf="clientSearchCtrl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilters()">
+          <mat-icon>close</mat-icon>
+        </button>        
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="filterByClientName($event)" [autoActiveFirstOption]="true">
+          <mat-option value="">--None--</mat-option>
+          <mat-option *ngFor="let client of filteredClients | async" [value]="client">
+            {{ client }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <mat-form-field fxFlex="10%">
+      <mat-select placeholder="Order By" (selectionChange)="orderDomainsBy($event)" [(value)]="selectedFilter" disableRipple>
+        <mat-option value="">--None--</mat-option>
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="client">Client</mat-option>
+        <mat-option value="domain">Domain</mat-option>
+        <mat-option value="status">Staus</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button [matTooltip]="isAcs ? 'asc' : 'desc'" mat-icon-button (click)="sort();isAcs = !isAcs">
+      <mat-icon *ngIf="isAcs">swap_vert</mat-icon>
+      <mat-icon *ngIf="!isAcs">swap_vertical_circle</mat-icon>
+    </button>
+
+    <button mat-icon-button 
+      matTooltip="{{statusCount.email}} email" 
+      (click)="filterDomainsByStatus('email')">
+      <mat-icon 
+        [matBadge]="statusCount.email" 
+        [matBadgeHidden]="domains.length < 1">alternate_email
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button 
+      matTooltip="{{statusCount.hosting}} hosting" 
+      (click)="filterDomainsByStatus('hosting')">
+      <mat-icon 
+        [matBadge]="statusCount.hosting" 
+        [matBadgeHidden]="domains.length < 1" 
+        matBadgeColor="accent">store
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button
+      matTooltip="{{statusCount.parked}} parked"
+      (click)="filterDomainsByStatus('parked')" >
+      <mat-icon 
+        [matBadge]="statusCount.parked" 
+        [matBadgeHidden]="domains.length < 1" 
+        matBadgeColor="warn">directions_car
+      </mat-icon>
+    </button>
+<!-- 
+    <button mat-icon-button
+      *ngIf="selectedClient || selectedFilter" 
+      matTooltip="Clear Filters" 
+      (click)="clearFilters()">
+      <mat-icon>clear_all</mat-icon>
+    </button>     -->
+
+  </div>
+  <div class="content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+    <app-panels (onUpdate)="update($event)" (onDelete)="delete($event);isLoading = true" *ngIf="domains" [panelItems]="domains"></app-panels>
+    <mat-spinner strokeWidth="4" diameter="50" *ngIf="domains.length < 1"></mat-spinner>
+  </div>
+</div>

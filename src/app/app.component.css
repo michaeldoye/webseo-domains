@@ -1,0 +1,53 @@
+.sidenav {
+  width: 250px;
+  box-shadow: none!important;
+}
+
+.content {
+  height: calc(100vh - 64px);
+}
+
+.container.dark-theme {
+  background: #303030!important;
+}
+
+.side-toggle {
+  margin-right: 15px;
+}
+
+.content::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #607D8B;
+  outline: 1px solid #607D8B;
+}
+
+button.add-fab {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
+}
+
+.offline-notification {
+  position: fixed;
+  bottom: 0px;
+  background: #F44336;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 0px;
+  text-align: center;
+  z-index: 99;
+}
+
+.offline-notification mat-icon {
+  font-size: 20px;
+  vertical-align: middle;
+}

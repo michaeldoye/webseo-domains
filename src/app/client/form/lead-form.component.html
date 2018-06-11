@@ -1,0 +1,20 @@
+<div>
+  <form (ngSubmit)="onSubmit();isLoading = true" [formGroup]="form">
+
+    <mat-grid-list cols="2" rowHeight="90px">
+      <mat-grid-tile *ngFor="let question of questions" class="form-row"> 
+        <app-question [question]="question" [form]="form"></app-question>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <div style="margin-right:10px" fxLayout="column" fxLayoutAlign="center end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+        Save
+      </button>
+    </div>
+
+  </form>
+  <div class="spinner-form" *ngIf="isLoading">
+    <mat-spinner mode="indeterminate" strokeWidth="4" diameter="50"></mat-spinner>
+  </div>
+</div>
