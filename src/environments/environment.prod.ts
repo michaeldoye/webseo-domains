@@ -1,7 +1,12 @@
+/**
+ * @ignore
+ */
 export const environment = {
   production: true
 };
-
+/**
+ * @ignore
+ */
 export const firebaseEnvironment = {
   production: true,
   firebase: {

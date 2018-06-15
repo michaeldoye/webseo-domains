@@ -19,21 +19,24 @@
         <mat-list fxFlex="50%">
           <mat-list-item>
             <mat-icon matListIcon>person</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.client" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'client')"></h3>
           </mat-list-item>
           
           <mat-list-item>
             <mat-icon matListIcon>find_replace</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.domain" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'domain')"></h3>
           </mat-list-item>
   
           <mat-list-item>
             <mat-icon matListIcon>network_wifi</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.ipaddress" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'ipaddress')"></h3>
           </mat-list-item>
@@ -42,21 +45,24 @@
         <mat-list>
           <mat-list-item>
             <mat-icon matListIcon>email</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.contact" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'contact')"></h3>
           </mat-list-item>
   
           <mat-list-item>
             <mat-icon matListIcon>monetization_on</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.cost" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'cost')"></h3>
           </mat-list-item>
   
           <mat-list-item>
             <mat-icon matListIcon>home</mat-icon>
-            <h3 matLine contenteditable="true" 
+            <h3 class="panel-item-title" 
+              matLine contenteditable="true" 
               [(msContenteditable)]="item.server" 
               (contenteditableModelChange)="nodeChange($event, item.id, 'server')"></h3>
           </mat-list-item>

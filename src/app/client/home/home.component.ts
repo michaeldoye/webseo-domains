@@ -6,6 +6,10 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
+/**
+ * Main Component
+ */
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

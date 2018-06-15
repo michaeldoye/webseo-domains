@@ -1,6 +1,12 @@
-# Domains
+# Domains 
+
+<a href="https://codebeat.co/projects/github-com-michaeldoye-webseo-domains-master"><img alt="codebeat badge" src="https://codebeat.co/badges/7df7b47e-2814-470d-9181-1915aa147feb" /></a>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
+
+## Docs
+
+Generated using Compodoc can be found [here](https://domains.webseo.co.za/documentation/index.html)
 
 ## Development server
 

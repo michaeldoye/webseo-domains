@@ -1,3 +1,14 @@
 :host {
   width: 100%;
 }
+
+h3.panel-item-title:hover {
+  border-bottom: 1px dashed #ccc;
+  cursor: pointer;
+}
+
+h3.panel-item-title {
+  padding-bottom: 2px!important;
+  transition: all .3s;
+  border-bottom: 1px solid transparent;
+}
